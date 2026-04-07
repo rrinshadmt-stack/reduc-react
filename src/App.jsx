@@ -1,23 +1,12 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from './counterSlice';
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
+import TodoApp from './Todoapp';
 
-function App() {
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
-
+export default function App() {
   return (
-    <div>
-      <h1>{count}</h1>
-
-      <button onClick={() => dispatch(increment())}>
-        Increase
-      </button>
-
-      <button onClick={() => dispatch(decrement())}>
-        Decrease
-      </button>
-    </div>
+    <Provider store={store}>
+      <TodoApp />
+    </Provider>
   );
 }
-
-export default App;
